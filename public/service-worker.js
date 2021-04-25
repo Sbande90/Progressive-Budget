@@ -47,7 +47,7 @@ const FILES_TO_CACHE = [
         caches.open(DATA_CACHE_NAME).then(cache => {
           return fetch(evt.request)
             .then(response => {
-   
+              console.log(response);
               if (response.status === 200) {
                 cache.put(evt.request.url, response.clone());
               }
@@ -55,7 +55,7 @@ const FILES_TO_CACHE = [
               return response;
             })
             .catch(err => {
-             
+             console.log(err);
                 return cache.match(evt.request);
               
             });
